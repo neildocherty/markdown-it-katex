@@ -51,10 +51,10 @@ function math_inline(state, silent) {
         return true;
     }
 
-    // First check for and bypass all properly escaped delimieters
+    // First check for and bypass all properly escaped delimiters
     // This loop will assume that the first leading backtick can not
     // be the first character in state.src, which is known since
-    // we have found an opening delimieter already.
+    // we have found an opening delimiter already.
     start = state.pos + 1;
     match = start;
     while ( (match = state.src.indexOf("$", match)) !== -1) {

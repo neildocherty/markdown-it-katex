@@ -19,6 +19,11 @@ testLoad(path.join(__dirname, 'fixtures/default.txt'), function(data){
 			var expected = fixture.second.text,
 				actual = md.render(fixture.first.text);
 
+				console.log(fixture.header, expected === actual)
+				if(expected !== actual){
+					console.log({expected, actual})
+				}
+
 			t.equals(actual, expected);
 
 		});

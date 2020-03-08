@@ -1,4 +1,6 @@
-# markdown-it-katex
+# markdown-it-katexx
+
+> Forked repo [waylonflinn/markdown-it-katex](https://github.com/waylonflinn/markdown-it-katex)
 
 Add Math to your Markdown
 
@@ -8,11 +10,24 @@ Add Math to your Markdown
 
 Need convincing?
 
-* Check out the comparative benchmark: [KaTeX vs MathJax](https://jsperf.com/katex-vs-mathjax/42)
-* Try it in your browser: [markdown-it-katex demo](http://waylonflinn.github.io/markdown-it-katex/)
+-   Check out the comparative benchmark: [KaTeX vs MathJax](https://jsperf.com/katex-vs-mathjax/42)
+-   Try it in your browser: [markdown-it-katex demo](http://waylonflinn.github.io/markdown-it-katex/)
+
+## TODO
+
+-   Switch to Jest
+-   Add Typescript
+-   Set up CI/CD
+-   Publish NPM package
+-   Webpack
+-   precommit hooks
+-   Code improvements?
+-   More test coverage?
 
 ## Usage
+
 Install markdown-it
+
 ```
 npm install markdown-it
 ```
@@ -27,7 +42,7 @@ Use it in your javascript
 
 ```javascript
 var md = require('markdown-it')(),
-    mk = require('markdown-it-katex');
+	mk = require('markdown-it-katex');
 
 md.use(mk);
 
@@ -36,31 +51,39 @@ var result = md.render('# Math Rulez! \n  $\\sqrt{3x-1}+(1+x)^2$');
 ```
 
 Include the KaTeX stylesheet in your html:
+
 ```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
 ```
 
 If you're using the default markdown-it parser, I also recommend the [github stylesheet](https://github.com/sindresorhus/github-markdown-css):
+
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
+<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"
+/>
 ```
 
 `KaTeX` options can be supplied with the second argument to use.
+
 ```javascript
-md.use(mk, {"throwOnError" : false, "errorColor" : " #cc0000"});
+md.use(mk, { throwOnError: false, errorColor: ' #cc0000' });
 ```
 
 ## Examples
 
 ### Inline
+
 Surround your LaTeX with a single `$` on each side for inline rendering.
+
 ```
 $\sqrt{3x-1}+(1+x)^2$
 ```
 
 ### Block
-Use two (`$$`) for block rendering. This mode uses bigger symbols and centers
-the result.
+
+Use two (`$$`) for block rendering. This mode uses bigger symbols and centers the result.
 
 ```
 $$\begin{array}{c}
@@ -88,7 +111,6 @@ Math parsing in markdown is designed to agree with the conventions set by pandoc
 
 ## Math Syntax Support
 
-KaTeX is based on TeX and LaTeX. Support for both is growing. Here's a list of
-currently supported functions:
+KaTeX is based on TeX and LaTeX. Support for both is growing. Here's a list of currently supported functions:
 
 [Function Support in KaTeX](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)
