@@ -1,6 +1,6 @@
 {
-	"name": "markdown-it-katex",
-	"version": "2.0.3",
+	"name": "markdown-it-katexx",
+	"version": "3.0.0",
 	"description": "Fast math support for markdown-it with KaTeX",
 	"main": "index.js",
 	"scripts": {
@@ -9,17 +9,21 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com:waylonflinn/markdown-it-katex.git"
+		"url": "git+ssh://git@github.com:Puritanic/markdown-it-katex.git"
 	},
 	"keywords": [
 		"markdown",
 		"KaTeX",
 		"math",
 		"LaTeX",
+		"TeX",
 		"markdown-it-plugin",
 		"markdown-it"
 	],
-	"author": "waylonflinn@gmail.com",
+	"contributors": [
+		"waylonflinn@gmail.com",
+		"darktasevski@gmail.com"
+	],
 	"license": "MIT",
 	"dependencies": {
 		"katex": "^0.11.1"

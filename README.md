@@ -6,6 +6,8 @@ Add Math to your Markdown
 
 [![Build Status](https://travis-ci.org/waylonflinn/markdown-it-katex.svg?branch=master)](https://travis-ci.org/waylonflinn/markdown-it-katex)
 
+[![NPM](https://nodei.co/npm/markdown-it-katexx.png)](https://npmjs.org/package/markdown-it-katexx)
+
 [KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support in your markdown.
 
 Need convincing?
@@ -18,13 +20,37 @@ Need convincing?
 -   Switch to Jest
 -   Add Typescript
 -   Set up CI/CD
--   Publish NPM package
+-   [x] Publish NPM package
 -   Webpack
 -   precommit hooks
 -   Code improvements?
 -   More test coverage?
 
 ## Usage
+
+Install it and add it to your config (Vuepress):
+
+```js
+module.exports = {
+	head: [
+		[
+			'link',
+			{
+				rel: 'stylesheet',
+				href: 'https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css',
+			},
+		],
+	],
+	markdown: {
+		extendMarkdown: md => {
+			md.set({ breaks: true });
+			md.use(require('markdown-it-katexx'), { throwOnError: false, errorColor: ' #cc0000' });
+		},
+	},
+};
+```
+
+## Getting Started
 
 Install markdown-it
 
@@ -35,7 +61,7 @@ npm install markdown-it
 Install the plugin
 
 ```
-npm install markdown-it-katex
+npm install markdown-it-katexx
 ```
 
 Use it in your javascript
