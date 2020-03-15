@@ -7,12 +7,10 @@ var input = document.getElementById('input'),
 	output = document.getElementById('output'),
 	button = document.getElementById('button');
 
-button.addEventListener('click', function(ev){
-
+button.addEventListener('click', function(ev) {
 	var result = md.render(input.value);
 
 	output.innerHTML = result;
-
 });
 
 /*
@@ -81,4 +79,6 @@ $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{
 $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | wha?
 
 ![electricity](http://i.giphy.com/Gty2oDYQ1fih2.gif)
+
+$\sqrt[3]{\frac{144}{125}}=\frac{\sqrt[3]{144}}{\sqrt[3]{125}}=\frac{(2^4 \times 3^2)^\frac{1}{3}}{(5^3)^{\frac{1}{3}}}=\frac{(2^{\frac{4}{3}}\times3^\frac{2}{3})}{5^\frac{3}{3}}=\frac{2^1\times2^\frac{1}{3}\times3^\frac{2}{3}}{5^1}=(\frac{2}{5})((2^\frac{1}{3})(3^\frac{2}{3}))=(\frac{2}{5})\sqrt[3]{(2)(3^2)}=\frac{2}{5}\sqrt[3]{18}$
 */

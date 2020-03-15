@@ -19,7 +19,7 @@ Need convincing?
 
 -   Switch to Jest
 -   Add Typescript
--   Set up CI/CD
+-   [x] Set up CI/CD
 -   [x] Publish NPM package
 -   Webpack
 -   precommit hooks
