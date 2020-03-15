@@ -4,7 +4,7 @@
 
 Add Math to your Markdown
 
-[![Build Status](https://travis-ci.org/waylonflinn/markdown-it-katex.svg?branch=master)](https://travis-ci.org/waylonflinn/markdown-it-katex)
+[![Build Status](https://travis-ci.com/Puritanic/markdown-it-katex.svg?branch=master)](https://travis-ci.com/Puritanic/markdown-it-katex)
 
 [![NPM](https://nodei.co/npm/markdown-it-katexx.png)](https://npmjs.org/package/markdown-it-katexx)
 
