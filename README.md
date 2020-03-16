@@ -1,8 +1,8 @@
 # markdown-it-katexx
 
-> Forked repo [waylonflinn/markdown-it-katex](https://github.com/waylonflinn/markdown-it-katex)
+![Maaath](./static/math_gif.gif)
 
-Add Math to your Markdown
+> Add Math to your Markdown
 
 [![Build Status](https://travis-ci.com/Puritanic/markdown-it-katex.svg?branch=master)](https://travis-ci.com/Puritanic/markdown-it-katex)
 
@@ -13,18 +13,18 @@ Add Math to your Markdown
 Need convincing?
 
 -   Check out the comparative benchmark: [KaTeX vs MathJax](https://jsperf.com/katex-vs-mathjax/42)
--   Try it in your browser: [markdown-it-katex demo](http://waylonflinn.github.io/markdown-it-katex/)
+-   Try it in your browser: [markdown-it-katex demo](https://puritanic.github.io/markdown-it-katex/)
 
 ## TODO
 
 -   [x] Switch to Jest
--   Add Typescript
+-   [ ] Add Typescript
 -   [x] Set up CI/CD
 -   [x] Publish NPM package
 -   [x] Bundler
 -   [x] precommit hooks
--   [] Code improvements?
--   [] More test coverage?
+-   [ ] Code improvements?
+-   [ ] More test coverage?
 
 ## Usage
 
@@ -54,13 +54,13 @@ module.exports = {
 
 Install markdown-it
 
-```
+```shell
 npm install markdown-it
 ```
 
 Install the plugin
 
-```
+```shell
 npm install markdown-it-katexx
 ```
 
@@ -76,22 +76,11 @@ md.use(mk);
 var result = md.render('# Math Rulez! \n  $\\sqrt{3x-1}+(1+x)^2$');
 ```
 
-Include the KaTeX stylesheet in your html:
-
-```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
-```
+Include the [KaTeX stylesheet](https://katex.org/docs/browser.html) in your html.
 
 If you're using the default markdown-it parser, I also recommend the [github stylesheet](https://github.com/sindresorhus/github-markdown-css):
 
-```html
-<link
-	rel="stylesheet"
-	href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"
-/>
-```
-
-`KaTeX` options can be supplied with the second argument to use.
+`KaTeX` [options](https://katex.org/docs/options.html) can be supplied with the second argument to use.
 
 ```javascript
 md.use(mk, { throwOnError: false, errorColor: ' #cc0000' });
@@ -99,19 +88,19 @@ md.use(mk, { throwOnError: false, errorColor: ' #cc0000' });
 
 ## Examples
 
-### Inline
+### Inline Math
 
 Surround your LaTeX with a single `$` on each side for inline rendering.
 
-```
+```latex
 $\sqrt{3x-1}+(1+x)^2$
 ```
 
-### Block
+### Math Block
 
 Use two (`$$`) for block rendering. This mode uses bigger symbols and centers the result.
 
-```
+```latex
 $$\begin{array}{c}
 
 \nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
@@ -128,15 +117,20 @@ $$\begin{array}{c}
 
 Math parsing in markdown is designed to agree with the conventions set by pandoc:
 
-    Anything between two $ characters will be treated as TeX math. The opening $ must
-    have a non-space character immediately to its right, while the closing $ must
-    have a non-space character immediately to its left, and must not be followed
-    immediately by a digit. Thus, $20,000 and $30,000 won’t parse as math. If for some
-    reason you need to enclose text in literal $ characters, backslash-escape them and
-    they won’t be treated as math delimiters.
+```html
+Anything between two $ characters will be treated as TeX math. The opening $ must have a non-space
+character immediately to its right, while the closing $ must have a non-space character immediately
+to its left, and must not be followed immediately by a digit. Thus, $20,000 and $30,000 won’t parse
+as math. If for some reason you need to enclose text in literal $ characters, backslash-escape them
+and they won’t be treated as math delimiters.
+```
 
 ## Math Syntax Support
 
 KaTeX is based on TeX and LaTeX. Support for both is growing. Here's a list of currently supported functions:
 
 [Function Support in KaTeX](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)
+
+---
+
+This repo is a fork of [waylonflinn/markdown-it-katex](https://github.com/waylonflinn/markdown-it-katex), initially forked to solve my own issues with the library, but then decided to work a bit on improving the library in general.
