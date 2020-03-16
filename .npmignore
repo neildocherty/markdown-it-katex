@@ -9,5 +9,7 @@ coverage/
 .prettierrc
 .travis.yml
 babel.config.json
+webpack.config.js
 src/browser.js
 src/index.html
+static/
