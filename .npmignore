@@ -3,3 +3,11 @@ node_modules
 .cache
 test/
 coverage/
+.eslintignore
+.eslintrc.json
+.gitignore
+.prettierrc
+.travis.yml
+babel.config.json
+src/browser.js
+src/index.html
