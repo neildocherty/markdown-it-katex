@@ -1,26 +1,86 @@
 {
-  "name": "markdown-it-katex",
-  "version": "1.0.6",
-  "description": "Fast math support for markdown-it with KaTeX",
-  "main": "index.js",
-  "scripts": {
-    "watch": "watchify browser.js -o bundle.js -v",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:waylonflinn/markdown-it-katex.git"
-  },
-  "keywords": [
-    "markdown",
-    "KaTeX",
-    "math",
-    "LaTeX",
-    "markdown-it-plugin"
-  ],
-  "author": "waylonflinn@gmail.com",
-  "license": "MIT",
-  "dependencies": {
-    "katex": "^0.5.1"
-  }
+	"name": "markdown-it-katexx",
+	"version": "3.1.0",
+	"description": "Fast math support for markdown-it with KaTeX",
+	"source": "src/index.js",
+	"main": "dist/index.js",
+	"module": "dist/index.module.js",
+	"unpkg": "dist/index.umd.js",
+	"scripts": {
+		"test": "NODE_ENV=test jest",
+		"lint": "npx eslint --ext .js src/",
+		"build": "npx microbundle",
+		"dev": "npx microbundle watch"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint && npm run test && lint-staged && git add --all"
+		}
+	},
+	"browserslist": "> 0.25%, not dead",
+	"lint-staged": {
+		"*.{js,ts}": [
+			"prettier --config .prettierrc --write"
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:Puritanic/markdown-it-katex.git"
+	},
+	"keywords": [
+		"markdown",
+		"KaTeX",
+		"math",
+		"LaTeX",
+		"TeX",
+		"markdown-it-plugin",
+		"markdown-it"
+	],
+	"contributors": [
+		"waylonflinn@gmail.com",
+		"darktasevski@gmail.com"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"katex": "^0.11.1"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "^7.8.7",
+		"babel-eslint": "^10.1.0",
+		"babel-jest": "^25.1.0",
+		"babel-loader": "^8.0.6",
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb-base": "^14.1.0",
+		"eslint-config-prettier": "^6.10.0",
+		"eslint-plugin-html": "^6.0.0",
+		"eslint-plugin-import": "^2.20.1",
+		"eslint-plugin-prettier": "^3.1.2",
+		"html": "^1.0.0",
+		"husky": "^4.2.3",
+		"jest": "^25.1.0",
+		"lint-staged": "^10.0.8",
+		"markdown-it": "^10.0.0",
+		"microbundle": "^0.11.0",
+		"prettier": "^1.19.1"
+	},
+	"jest": {
+		"collectCoverage": true,
+		"coverageReporters": [
+			"lcov"
+		],
+		"modulePathIgnorePatterns": [
+			"<rootDir>/lib/"
+		],
+		"verbose": true,
+		"transform": {
+			"^.+\\.js$": "babel-jest"
+		},
+		"moduleFileExtensions": [
+			"js"
+		],
+		"moduleDirectories": [
+			"node_modules",
+			"src/"
+		]
+	}
 }
