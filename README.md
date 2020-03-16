@@ -8,7 +8,7 @@ Add Math to your Markdown
 
 [![NPM](https://nodei.co/npm/markdown-it-katexx.png)](https://npmjs.org/package/markdown-it-katexx)
 
-[KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support in your markdown.
+[KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support your markdown.
 
 Need convincing?
 
@@ -17,14 +17,14 @@ Need convincing?
 
 ## TODO
 
--   Switch to Jest
+-   [x] Switch to Jest
 -   Add Typescript
 -   [x] Set up CI/CD
 -   [x] Publish NPM package
--   Webpack
--   precommit hooks
--   Code improvements?
--   More test coverage?
+-   [x] Bundler
+-   [x] precommit hooks
+-   [] Code improvements?
+-   [] More test coverage?
 
 ## Usage
 
@@ -64,7 +64,7 @@ Install the plugin
 npm install markdown-it-katexx
 ```
 
-Use it in your javascript
+Use it in your javascript:
 
 ```javascript
 var md = require('markdown-it')(),

@@ -7,50 +7,50 @@ It differs in that it takes (a subset of) LaTeX as input and relies on KaTeX
 for rendering output.
 */
 
-/*jslint node: true */
-'use strict';
+import katex from 'katex';
 
-var katex = require('katex');
-
-// Test if potential opening or closing delimieter
+// Test if potential opening or closing delimiter
 // Assumes that there is a "$" at state.src[pos]
-function isValidDelim(state, pos) {
-	var prevChar,
-		nextChar,
-		max = state.posMax,
-		can_open = true,
-		can_close = true;
+function isValidDelimiter(state, pos) {
+	const max = state.posMax;
 
-	prevChar = pos > 0 ? state.src.charCodeAt(pos - 1) : -1;
-	nextChar = pos + 1 <= max ? state.src.charCodeAt(pos + 1) : -1;
+	let canOpen = true;
+	let canClose = true;
+
+	const prevChar = pos > 0 ? state.src.charCodeAt(pos - 1) : -1;
+	const nextChar = pos + 1 <= max ? state.src.charCodeAt(pos + 1) : -1;
 
 	// Check non-whitespace conditions for opening and closing, and
-	// check that closing delimeter isn't followed by a number
+	// check that closing delimiter isn't followed by a number
 	if (
 		prevChar === 0x20 /* " " */ ||
 		prevChar === 0x09 /* \t */ ||
 		(nextChar >= 0x30 /* "0" */ && nextChar <= 0x39) /* "9" */
 	) {
-		can_close = false;
+		canClose = false;
 	}
 	if (nextChar === 0x20 /* " " */ || nextChar === 0x09 /* \t */) {
-		can_open = false;
+		canOpen = false;
 	}
 
 	return {
-		can_open: can_open,
-		can_close: can_close,
+		can_open: canOpen,
+		can_close: canClose,
 	};
 }
 
-function math_inline(state, silent) {
-	var start, match, token, res, pos, esc_count;
+function mathInline(state, silent) {
+	let match;
+	let token;
+	let res;
+	let pos;
 
 	if (state.src[state.pos] !== '$') {
 		return false;
 	}
 
-	res = isValidDelim(state, state.pos);
+	res = isValidDelimiter(state, state.pos);
+
 	if (!res.can_open) {
 		if (!silent) {
 			state.pending += '$';
@@ -63,8 +63,10 @@ function math_inline(state, silent) {
 	// This loop will assume that the first leading backtick can not
 	// be the first character in state.src, which is known since
 	// we have found an opening delimiter already.
-	start = state.pos + 1;
+	const start = state.pos + 1;
 	match = start;
+	// TODO: refactor this!
+	// eslint-disable-next-line no-cond-assign
 	while ((match = state.src.indexOf('$', match)) !== -1) {
 		// Found potential $, look for escapes, pos will point to
 		// first non escape when complete
@@ -74,13 +76,13 @@ function math_inline(state, silent) {
 		}
 
 		// Even number of escapes, potential closing delimiter found
-		if ((match - pos) % 2 == 1) {
+		if ((match - pos) % 2 === 1) {
 			break;
 		}
 		match += 1;
 	}
 
-	// No closing delimter found.  Consume $ and continue.
+	// No closing delimiter found.  Consume $ and continue.
 	if (match === -1) {
 		if (!silent) {
 			state.pending += '$';
@@ -99,7 +101,7 @@ function math_inline(state, silent) {
 	}
 
 	// Check for valid closing delimiter
-	res = isValidDelim(state, match);
+	res = isValidDelimiter(state, match);
 	if (!res.can_close) {
 		if (!silent) {
 			state.pending += '$';
@@ -118,15 +120,14 @@ function math_inline(state, silent) {
 	return true;
 }
 
-function math_block(state, start, end, silent) {
-	var firstLine,
-		lastLine,
-		next,
-		lastPos,
-		found = false,
-		token,
-		pos = state.bMarks[start] + state.tShift[start],
-		max = state.eMarks[start];
+function mathBlock(state, start, end, silent) {
+	let firstLine;
+	let lastLine;
+	let next;
+	let lastPos;
+	let found = false;
+	let pos = state.bMarks[start] + state.tShift[start];
+	let max = state.eMarks[start];
 
 	if (pos + 2 > max) {
 		return false;
@@ -176,10 +177,10 @@ function math_block(state, start, end, silent) {
 
 	state.line = next + 1;
 
-	token = state.push('math_block', 'math', 0);
+	const token = state.push('math_block', 'math', 0);
 	token.block = true;
 	token.content =
-		(firstLine && firstLine.trim() ? firstLine + '\n' : '') +
+		(firstLine && firstLine.trim() ? `${firstLine}\n` : '') +
 		state.getLines(start + 1, next, state.tShift[start], true) +
 		(lastLine && lastLine.trim() ? lastLine : '');
 	token.map = [start, state.line];
@@ -196,56 +197,58 @@ function escapeHtml(unsafe) {
 		.replace(/'/g, '&#039;');
 }
 
-module.exports = function math_plugin(md, options) {
+export default function mathPlugin(md, options) {
 	// Default options
-
 	options = options || {};
 
 	// set KaTeX as the renderer for markdown-it-simplemath
-	var katexInline = function(latex) {
+	function katexInline(latex) {
 		options.displayMode = false;
+
 		try {
 			return katex.renderToString(latex, options);
 		} catch (error) {
 			if (options.throwOnError) {
+				// eslint-disable-next-line no-console
 				console.log(error);
 			}
 			return `<span class='katex-error' title='${escapeHtml(error.toString())}'>${escapeHtml(
 				latex
 			)}</span>`;
 		}
-	};
+	}
 
-	var inlineRenderer = function(tokens, idx) {
+	function inlineRenderer(tokens, idx) {
 		return katexInline(tokens[idx].content);
-	};
+	}
 
-	var katexBlock = function(latex) {
+	function katexBlock(latex) {
 		options.displayMode = true;
+
 		try {
-			return (
-				"<p class='katex-block'>" +
-				katex.renderToString(latex, options) +
-				"<p class='katex-block'>"
-			);
+			return `<p class='katex-block'>${katex.renderToString(
+				latex,
+				options
+			)}<p class='katex-block'>`;
 		} catch (error) {
 			if (options.throwOnError) {
+				// eslint-disable-next-line no-console
 				console.log(error);
 			}
 			return `<p class='katex-block katex-error' title='${escapeHtml(
 				error.toString()
 			)}'>${escapeHtml(latex)}</p>`;
 		}
-	};
+	}
 
-	var blockRenderer = function(tokens, idx) {
-		return katexBlock(tokens[idx].content) + '\n';
-	};
+	function blockRenderer(tokens, idx) {
+		return `${katexBlock(tokens[idx].content)}\n`;
+	}
 
-	md.inline.ruler.after('escape', 'math_inline', math_inline);
-	md.block.ruler.after('blockquote', 'math_block', math_block, {
+	md.inline.ruler.after('escape', 'math_inline', mathInline);
+	md.block.ruler.after('blockquote', 'math_block', mathBlock, {
 		alt: ['paragraph', 'reference', 'blockquote', 'list'],
 	});
 	md.renderer.rules.math_inline = inlineRenderer;
 	md.renderer.rules.math_block = blockRenderer;
-};
+}
