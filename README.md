@@ -1,10 +1,8 @@
-# markdown-it-katexx
+# markdown-it-katexx [![Build Status](https://travis-ci.org/Puritanic/markdown-it-katex.svg?branch=master)](https://travis-ci.org/Puritanic/markdown-it-katex)
 
 ![Maaath](./static/math_gif.gif)
 
 > Add Math to your Markdown
-
-[![Build Status](https://travis-ci.com/Puritanic/markdown-it-katex.svg?branch=master)](https://travis-ci.com/Puritanic/markdown-it-katex)
 
 [![NPM](https://nodei.co/npm/markdown-it-katexx.png)](https://npmjs.org/package/markdown-it-katexx)
 
