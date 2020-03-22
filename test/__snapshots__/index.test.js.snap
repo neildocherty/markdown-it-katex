@@ -21,7 +21,7 @@ exports[`markdown-it-katex Block math can be indented up to 3 spaces 1`] = `
                 </span>
                 </span>
                 </span>
-                <p class='katex-block'>"
+</p>"
 `;
 
 exports[`markdown-it-katex But 4 means a code block 1`] = `
@@ -75,7 +75,7 @@ exports[`markdown-it-katex Display and inline math can appear in lists 1`] = `
                     </span>
                     </span>
                     </span>
-                    <p class='katex-block'>
+    </p>
   </li>
 </ul>"
 `;
@@ -101,7 +101,7 @@ exports[`markdown-it-katex Display math can be written in one line 1`] = `
                 </span>
                 </span>
                 </span>
-                <p class='katex-block'>"
+</p>"
 `;
 
 exports[`markdown-it-katex Display math self-closes at the end of document 1`] = `
@@ -125,7 +125,7 @@ exports[`markdown-it-katex Display math self-closes at the end of document 1`] =
                 </span>
                 </span>
                 </span>
-                <p class='katex-block'>"
+</p>"
 `;
 
 exports[`markdown-it-katex Escaped delimiters in math mode 1`] = `
@@ -156,7 +156,7 @@ exports[`markdown-it-katex Escaped delimiters should not render math 1`] = `
     </span>
     </span>
     </span>
-    <p class='katex-block'>"
+</p>"
 `;
 
 exports[`markdown-it-katex Even when it starts with a negative sign 1`] = `
@@ -233,7 +233,7 @@ exports[`markdown-it-katex Multiline display math 1`] = `
                 </span>
                 </span>
                 </span>
-                <p class='katex-block'>"
+</p>"
 `;
 
 exports[`markdown-it-katex Multiline inline math 1`] = `
@@ -301,7 +301,7 @@ exports[`markdown-it-katex Or on multiple lines with expression starting and end
           </span>
           </span>
           </span>
-          <p class='katex-block'>"
+</p>"
 `;
 
 exports[`markdown-it-katex Paragraph break in inline math is not allowed 1`] = `
@@ -338,7 +338,7 @@ exports[`markdown-it-katex Simple block math 1`] = `
                 </span>
                 </span>
                 </span>
-                <p class='katex-block'>"
+</p>"
 `;
 
 exports[`markdown-it-katex Simple inline math 1`] = `
