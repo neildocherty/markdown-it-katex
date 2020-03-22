@@ -226,7 +226,7 @@ export default function mathPlugin(md, options) {
 		options.displayMode = true;
 
 		try {
-			return `<p class='katex-block'>${katex.renderToString(latex, options)}</p>`;
+			return katex.renderToString(latex, options);
 		} catch (error) {
 			if (options.throwOnError) {
 				// eslint-disable-next-line no-console

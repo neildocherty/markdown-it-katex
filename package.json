@@ -9,7 +9,7 @@
 	"scripts": {
 		"test": "NODE_ENV=test jest",
 		"lint": "npx eslint --ext .js src/",
-		"build": "npx microbundle",
+		"build": "npx microbundle --sourcemap false",
 		"build:pages": "webpack",
 		"dev": "npx microbundle watch"
 	},
