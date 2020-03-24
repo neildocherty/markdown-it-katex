@@ -16,7 +16,7 @@ Need convincing?
 ## TODO
 
 -   [x] Switch to Jest
--   [ ] Add Typescript
+-   [ ] Typescript
 -   [x] Set up CI/CD
 -   [x] Publish NPM package
 -   [x] Bundler
@@ -66,7 +66,7 @@ Use it in your javascript:
 
 ```javascript
 var md = require('markdown-it')(),
-	mk = require('markdown-it-katex');
+	mk = require('markdown-it-katexx');
 
 md.use(mk);
 
