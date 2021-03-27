@@ -1,10 +1,9 @@
-# markdown-it-katexx [![Build Status](https://travis-ci.org/Puritanic/markdown-it-katex.svg?branch=master)](https://travis-ci.org/Puritanic/markdown-it-katex)
+# markdown-it-katex
 
 ![Maaath](./static/math_gif.gif)
 
 > Add Math to your Markdown
 
-[![NPM](https://nodei.co/npm/markdown-it-katexx.png)](https://npmjs.org/package/markdown-it-katexx)
 
 [KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support your markdown.
 
